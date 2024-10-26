@@ -1,0 +1,452 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #5f4339;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Mempertahankan jarak antara logo dan nav */
+    align-items: center;
+}
+
+/* Gaya Logo */
+header .logo {
+    color: #fff;
+    font-size: 1.75rem; /* Disesuaikan ke rem */
+    font-weight: bold;
+}
+
+/* Gaya Navigasi */
+header nav {
+    margin-left: auto; /* Ini mendorong nav ke kanan */
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Gaya Item Daftar */
+header nav ul li {
+    margin-left: 2rem; /* Disesuaikan ke rem */
+}
+
+/* Gaya Tautan */
+header nav ul li a {
+    color: #fff;
+    font-size: 1.125rem; /* Disesuaikan ke rem */
+    padding: 0.5rem 1rem; /* Disesuaikan ke rem */
+}
+
+
+/* Hero Section */
+.hero {
+    background: url('gambar/WhatsApp Image 2024-09-17 at 21.20.30_bf76fcb6.jpg') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 3rem; /* Adjusted to rem */
+    font-weight: 700;
+    margin-bottom: 0.5rem; /* Adjusted to rem */
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 1.375rem; /* Adjusted to rem */
+    margin-bottom: 1.25rem; /* Adjusted to rem */
+    letter-spacing: 1px;
+}
+
+/* Gaya untuk tombol */
+.button {
+    display: inline-block; /* Menjadikan tombol sebagai inline-block */
+    margin-top: 1rem; /* Memberikan jarak atas */
+    padding: 0.75rem 1.5rem; /* Padding untuk tombol */
+    background-color: #ED5151; /* Warna latar belakang tombol */
+    color: #fff; /* Warna teks tombol */
+    font-size: 1rem; /* Ukuran font tombol */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    border-radius: 30px; /* Sudut membulat, diubah menjadi 10px */
+    transition: background-color 0.3s; /* Transisi warna saat hover */
+}
+
+.button:hover {
+    background-color: #d84b4b; /* Warna latar belakang saat hover */
+}
+
+
+/* About Us Section */
+.about-us {
+    background-color: #d2b49a;
+    padding: 6rem 0; /* Adjusted to rem */
+    text-align: center;
+    position: relative;
+}
+
+.about-us h2 {
+    font-size: 2.625rem; /* Adjusted to rem */
+    margin-bottom: 1.25rem; /* Adjusted to rem */
+    font-weight: 600;
+    color: #5f4339;
+}
+
+.about-us p {
+    font-size: 1.125rem; /* Adjusted to rem */
+    line-height: 1.8;
+    width: 70%;
+    margin: 0 auto;
+    color: #333;
+}
+
+/* Top Categories Section */
+.top-categories {
+    background-color: #5f4339;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.top-categories h2 {
+    font-size: 2.625rem;
+    margin-bottom: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.category-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.category-cards .card {
+    width: 30%;
+    height: 250px;
+    margin: 1.25rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s;
+}
+
+.category-cards .card:hover {
+    transform: translateY(-10px);
+}
+
+.category-cards .coffee-card {
+    background-image: url('gambar/Super Automatic Espresso Machines for Home.jpg');
+}
+
+.category-cards .tea-card {
+    background-image: url('gambar/IouHMxV0.jpg');
+}
+
+.category-cards .milkshake-card {
+    background-image: url('gambar/Free Photo _ Taro potato iced tea on table.jpg');
+}
+
+.category-cards .card p {
+    position: relative;
+    z-index: 2; /* Menempatkan teks di atas semua elemen lain */
+    margin: 0;
+}
+
+/* Membuat lapisan glass hitam transparan */
+.category-cards .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Glass hitam transparan yang sedikit lebih terang */
+    backdrop-filter: blur(3px); /* Efek blur yang lebih ringan */
+    border-radius: 15px;
+    transition: opacity 0.3s; /* Transisi untuk efek hilang */
+    z-index: 1; /* Menempatkan glass di bawah teks */
+}
+
+/* Efek hover untuk menghilangkan glass */
+.category-cards .card:hover::before {
+    opacity: 0; /* Hilangkan glass saat di-hover */
+}
+
+/* Top Coffee Section */
+.top-coffee {
+    background-color: #5f4339; /* Warna latar belakang sama dengan kategori */
+    padding: 4rem 0; /* Padding untuk section */
+    text-align: center;
+}
+
+/* Top Coffee Section */
+.top-coffee {
+    background-color: #5f4339; /* Warna latar belakang */
+    padding: 4rem 0; /* Padding untuk section */
+    text-align: center; /* Teks berada di tengah */
+}
+
+.top-coffee h2 {
+    font-size: 2.625rem; /* Ukuran font untuk header */
+    margin-bottom: 2.5rem; /* Jarak bawah */
+    font-weight: bold;
+    color: #fff; /* Warna teks header */
+}
+
+.coffee-cards {
+    display: flex; /* Menggunakan Flexbox untuk tata letak */
+    justify-content: space-between; /* Menjaga jarak antar kartu */
+    flex-wrap: wrap; /* Membungkus kartu jika perlu */
+}
+
+.coffee-cards .card {
+    width: 250px; /* Ukuran kartu menjadi 250px */
+    height: 250px; /* Tinggi kartu */
+    margin: 0.625rem; /* Jarak antar kartu yang lebih kecil */
+    border-radius: 15px; /* Sudut membulat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan */
+    display: flex; /* Menggunakan Flexbox untuk penataan isi */
+    align-items: center; /* Pusatkan isi secara vertikal */
+    justify-content: center; /* Pusatkan isi secara horizontal */
+    font-size: 1.5rem; /* Ukuran font */
+    color: #fff; /* Warna teks */
+    font-weight: bold; /* Berat font */
+    text-align: center; /* Teks rata tengah */
+    position: relative; /* Agar posisi relatif untuk lapisan */
+    overflow: hidden; /* Memastikan tidak ada overflow */
+    background-size: cover; /* Ukuran latar belakang */
+    background-position: center; /* Pusatkan latar belakang */
+    transition: transform 0.3s; /* Transisi untuk efek hover */
+}
+
+.coffee-cards .card:hover {
+    transform: translateY(-10px); /* Efek hover */
+}
+
+/* Menambahkan gambar latar belakang untuk kartu kopi */
+.coffee-cards .americano-card {
+    background-image: url('gambar/americano.jpg');
+}
+
+.coffee-cards .v60-card {
+    background-image: url('gambar/v60.jpg');
+}
+
+.coffee-cards .robusta-card {
+    background-image: url('gambar/robusta.jpg');
+}
+
+.coffee-cards .arabica-card {
+    background-image: url('gambar/arabica.jpg');
+}
+
+/* Membuat lapisan glass hitam transparan pada kartu kopi */
+.coffee-cards .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Glass hitam transparan */
+    backdrop-filter: blur(3px); /* Efek blur */
+    border-radius: 15px; /* Sudut membulat */
+    transition: opacity 0.3s; /* Transisi untuk efek hilang */
+    z-index: 1; /* Menempatkan glass di bawah teks */
+}
+
+/* Pastikan teks berada di atas lapisan glass */
+.coffee-cards .card p {
+    position: relative; /* Menetapkan posisi relatif untuk teks */
+    z-index: 2; /* Pastikan z-index lebih tinggi dari lapisan glass */
+    margin: 0; /* Menghapus margin untuk teks */
+}
+
+/* Efek hover untuk menghilangkan glass pada kartu kopi */
+.coffee-cards .card:hover::before {
+    opacity: 0; /* Hilangkan glass saat di-hover */
+}
+
+
+.download-app {
+    background-color: #ffffff;
+    padding: 4rem 0;
+    text-align: center;
+    position: relative; /* Enable positioning for children */
+}
+
+.download-app .container {
+    position: relative; /* Enable positioning for children */
+    display: flex; /* Menggunakan Flexbox untuk tata letak */
+    flex-direction: column; /* Mengatur arah menjadi kolom */
+    align-items: flex-start; /* Rata kiri secara horizontal */
+}
+
+.download-app .text-content {
+    text-align: left; /* Rata kiri untuk teks */
+    z-index: 1; /* Pastikan teks di atas gambar */
+    margin-bottom: 2rem; /* Jarak bawah untuk memberikan ruang antara teks dan gambar */
+}
+
+.download-app h2 {
+    font-size: 2.625rem;
+    margin-bottom: 0.5rem; /* Mengurangi margin bawah */
+    font-weight: bold;
+    color: #5f4339;
+}
+
+.download-app p {
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 1.25rem;
+}
+
+.download-app .first-image {
+    width: 300px; /* Ukuran gambar pertama */
+}
+
+.download-app .large-image {
+    width: 600px; /* Ukuran gambar kedua yang lebih besar */
+    margin-top: -200px;
+}
+
+.download-app .image-wrapper {
+    display: flex; /* Menggunakan Flexbox untuk menata gambar */
+    gap: 18rem; /* Jarak antar gambar yang lebih kecil */
+    justify-content: space-between; /* Mengatur gambar ke kiri */
+    align-items: flex-start; /* Rata atas untuk gambar */
+    flex-wrap: wrap; /* Membungkus gambar jika perlu */
+}
+
+
+
+
+/* Footer Section */
+footer {
+    background-color: #5f4339;
+    padding: 2.5rem 0; /* Adjusted to rem */
+    color: #fff;
+    text-align: center;
+}
+
+footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.875rem; /* Adjusted to rem */
+    color: #fff;
+}
+
+.footer-content .contact-form {
+    width: 60%;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.625rem; /* Adjusted to rem */
+    margin-bottom: 0.625rem; /* Adjusted to rem */
+    border-radius: 5px;
+    border: none;
+    background-color: #f5f5f5;
+}
+
+.contact-form button {
+    background-color: #f4511e;
+    color: #fff;
+    padding: 0.625rem 1.25rem; /* Adjusted to rem */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.625rem; /* Adjusted to rem */
+}
+
+footer .footer-info {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer .footer-info p {
+    margin: 0;
+    font-size: 1rem; /* Adjusted to rem */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .category-cards .card,
+    .coffee-cards .card {
+        width: 90%; /* Full width on small screens */
+    }
+    
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+        margin-bottom: 1rem; /* Space between items */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-info {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

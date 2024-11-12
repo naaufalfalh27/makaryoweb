@@ -1,3 +1,7 @@
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
 /* Global Styles */
 body {
     margin: 0;
@@ -53,12 +57,98 @@ header nav ul {
 header nav ul li {
     margin-left: 2rem; /* Disesuaikan ke rem */
 }
+.sign-in-button {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
 
 /* Gaya Tautan */
 header nav ul li a {
     color: #fff;
     font-size: 1.125rem; /* Disesuaikan ke rem */
     padding: 0.5rem 1rem; /* Disesuaikan ke rem */
+}
+
+/* Animasi Slide-in */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Terapkan animasi ke bagian konten utama */
+.hero-content, 
+.about-us h2, 
+.about-us p, 
+.top-categories h2, 
+.category-cards .card, 
+.top-coffee h2, 
+.coffee-cards .card, 
+.download-app h2, 
+.download-app p {
+    animation: slideIn 1s ease-out forwards;
+    opacity: 0; /* Menyembunyikan elemen awal */
+}
+
+/* Animasi khusus untuk download app section */
+.download-app .text-content {
+    animation: slideInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+/* Menyesuaikan durasi dan jeda untuk variasi */
+.hero-content {
+    animation-delay: 0.2s;
+}
+
+.about-us h2, 
+.top-categories h2, 
+.top-coffee h2, 
+.download-app h2 {
+    animation-delay: 0.4s;
+}
+
+.about-us p, 
+.category-cards .card, 
+.coffee-cards .card, 
+.download-app p {
+    animation-delay: 0.6s;
+}
+
+/* Efek Hover tambahan untuk kategori */
+.category-cards .card:hover, 
+.coffee-cards .card:hover {
+    transform: translateY(-10px) scale(1.05);
+    transition: transform 0.3s ease-out;
+}
+/* Gaya animasi untuk section yang sedang dituju */
+.animate-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-section.animate-section {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
@@ -290,7 +380,7 @@ header nav ul li a {
 }
 
 .coffee-cards .arabica-card {
-    background-image: url('gambar/arabica.jpg');
+    background-image: url('gambar/IouHMxV0.jpg');
 }
 
 /* Membuat lapisan glass hitam transparan pada kartu kopi */

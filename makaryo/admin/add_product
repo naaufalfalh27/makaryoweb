@@ -1,0 +1,62 @@
+<?php
+include 'db.php'; // Memasukkan file koneksi database
+
+// Cek jika ada form yang disubmit
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Ambil data dari form
+    $productName = $_POST['productName'];
+    $price = $_POST['price'];
+    $category = $_POST['category'];
+    $image = $_FILES['productImage']['name'];
+    $imageTmpName = $_FILES['productImage']['tmp_name'];
+    $imageSize = $_FILES['productImage']['size'];
+    $imageError = $_FILES['productImage']['error'];
+
+    // Validasi input
+    if (empty($productName) || empty($price) || empty($category) || empty($image)) {
+        echo "All fields are required!";
+        exit;
+    }
+
+    // Validasi ekstensi gambar
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    $imageExtension = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+    
+    if (!in_array($imageExtension, $allowedExtensions)) {
+        echo "Invalid image type. Only JPG, JPEG, PNG, and GIF are allowed.";
+        exit;
+    }
+
+    // Validasi ukuran gambar (maksimal 5MB)
+    if ($imageSize > 5 * 1024 * 1024) {
+        echo "File size should not exceed 5MB.";
+        exit;
+    }
+
+    // Cegah duplikasi nama file dengan menambahkan waktu
+    $imageNewName = time() . "." . $imageExtension;
+    $imageDestination = "uploads/" . $imageNewName;
+
+    // Pindahkan file gambar ke folder uploads
+    if (move_uploaded_file($imageTmpName, $imageDestination)) {
+        // Prepared statement untuk menghindari SQL injection
+        $stmt = $conn->prepare("INSERT INTO products (name, price, category, image) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $productName, $price, $category, $imageNewName);
+        
+        // Eksekusi query
+        if ($stmt->execute()) {
+            echo "New product added successfully!";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Tutup statement
+        $stmt->close();
+    } else {
+        echo "Failed to upload image.";
+    }
+}
+
+// Tutup koneksi database
+$conn->close();
+?>

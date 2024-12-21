@@ -1,3 +1,42 @@
+<?php
+session_start();
+include 'db.php'; // File koneksi database
+
+$is_logged_in = isset($_SESSION['email']);
+$username = '';
+
+if ($is_logged_in) {
+    $email = $_SESSION['email'];
+
+    // Query untuk mengambil username berdasarkan email
+    $query = "SELECT username FROM customers WHERE email = ?";
+    $stmt = $conn->prepare($query);
+
+    // Cek apakah query berhasil dipersiapkan
+    if ($stmt) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $username = $row['username'];
+        } else {
+            $username = 'User'; // Default jika username tidak ditemukan
+        }
+
+        $stmt->close();
+    } else {
+        // Tampilkan error jika prepare gagal
+        die("Error query: " . $conn->error);
+    }
+}
+
+$profile_image = $is_logged_in ? 'path/to/user-image/' . $_SESSION['email'] . '.jpg' : '';
+include 'header.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +47,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Menambahkan CDN Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
 
     <style>
         html {
@@ -28,26 +70,21 @@
     </style>
     
 </head>
+
 <body>
-    <header>
-        <div class="logo">Logo</div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#download app">Download App</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="admin.php" class="sign-in-button">Sign In</a></li>
-            </ul>
-        </nav>
-    </header>
+
+
+    
+    
+    
+
     
     <!-- Hero Section -->
     <section class="hero fade-in-scroll" id="home">
         <div class="hero-content">
             <h1>HEY! ENJOY YOUR COFFEE TIME</h1>
             <p>FRESHLY ROASTED COFFEE</p>
-            <a href="view_menu.php" class="button">See Menu</a>
+            <a href="menu.php" class="button">See Menu</a>
         </div>
     </section>
 
@@ -136,8 +173,9 @@
                 <p>Follow Us</p>
             </div>
             <div class="footer-logout">
-                <a href="makaryo.html" class="logout-button">Logout</a>
-            </div>
+    <a href="logout.php" class="logout-button">Logout</a>
+</div>
+
         </div>
     </footer>
     

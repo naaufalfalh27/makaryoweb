@@ -22,54 +22,7 @@ a {
     margin: 0 auto;
 }
 
-/* Header */
-header {
-    background-color: #5f4339;
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between; /* Mempertahankan jarak antara logo dan nav */
-    align-items: center;
-}
 
-/* Gaya Logo */
-header .logo {
-    color: #fff;
-    font-size: 1.75rem; /* Disesuaikan ke rem */
-    font-weight: bold;
-}
-
-/* Gaya Navigasi */
-header nav {
-    margin-left: auto; /* Ini mendorong nav ke kanan */
-}
-
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-/* Gaya Item Daftar */
-header nav ul li {
-    margin-left: 2rem; /* Disesuaikan ke rem */
-}
-.sign-in-button {
-    position: relative;
-    z-index: 10;
-    pointer-events: auto;
-}
-
-
-/* Gaya Tautan */
-header nav ul li a {
-    color: #fff;
-    font-size: 1.125rem; /* Disesuaikan ke rem */
-    padding: 0.5rem 1rem; /* Disesuaikan ke rem */
-}
 
 /* Animasi Slide-in */
 @keyframes slideIn {
@@ -410,30 +363,29 @@ header nav ul li a {
     opacity: 0; /* Hilangkan glass saat di-hover */
 }
 
-
 .download-app {
     background-color: #ffffff;
     padding: 4rem 0;
     text-align: center;
-    position: relative; /* Enable positioning for children */
+    position: relative;
 }
 
 .download-app .container {
-    position: relative; /* Enable positioning for children */
-    display: flex; /* Menggunakan Flexbox untuk tata letak */
-    flex-direction: column; /* Mengatur arah menjadi kolom */
-    align-items: flex-start; /* Rata kiri secara horizontal */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .download-app .text-content {
-    text-align: left; /* Rata kiri untuk teks */
-    z-index: 1; /* Pastikan teks di atas gambar */
-    margin-bottom: 2rem; /* Jarak bawah untuk memberikan ruang antara teks dan gambar */
+    text-align: left;
+    z-index: 1;
+    margin-bottom: 2rem;
 }
 
 .download-app h2 {
     font-size: 2.625rem;
-    margin-bottom: 0.5rem; /* Mengurangi margin bawah */
+    margin-bottom: 0.5rem;
     font-weight: bold;
     color: #5f4339;
 }
@@ -445,20 +397,48 @@ header nav ul li a {
 }
 
 .download-app .first-image {
-    width: 300px; /* Ukuran gambar pertama */
+    width: 300px; /* Default size for large screens */
 }
 
 .download-app .large-image {
-    width: 600px; /* Ukuran gambar kedua yang lebih besar */
+    width: 600px; /* Default size for large screens */
     margin-top: -200px;
 }
 
 .download-app .image-wrapper {
-    display: flex; /* Menggunakan Flexbox untuk menata gambar */
-    gap: 18rem; /* Jarak antar gambar yang lebih kecil */
-    justify-content: space-between; /* Mengatur gambar ke kiri */
-    align-items: flex-start; /* Rata atas untuk gambar */
-    flex-wrap: wrap; /* Membungkus gambar jika perlu */
+    display: flex;
+    gap: 18rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .download-app .first-image {
+        width: 100px; /* Smaller size for smaller screens */
+    }
+
+    .download-app .large-image {
+        width: 200px; /* Smaller size for smaller screens */
+        margin-top: -50px; /* Adjust the margin for better alignment */
+    }
+
+    .download-app .image-wrapper {
+        display: flex;
+    gap: 5rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    }
+
+    .download-app h2 {
+        font-size: 2rem; /* Reduce font size for smaller screens */
+    }
+
+    .download-app p {
+        font-size: 1rem; /* Adjust text size for readability */
+    }
 }
 
 

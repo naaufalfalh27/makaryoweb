@@ -1,0 +1,48 @@
+# Aktifkan URL Rewriting
+RewriteEngine On
+
+# Redirect ke HTTPS (opsional, jika menggunakan HTTPS)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
+# Default ke index.php jika file tidak ditemukan
+DirectoryIndex index.php index.html
+
+# Rewrite semua request ke index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+
+# Blokir akses ke file .ht* (seperti .htaccess atau .htpasswd)
+<Files ~ "^\.ht">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Batasi ukuran upload maksimal (opsional)
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+
+# Batasi waktu eksekusi skrip (opsional)
+php_value max_execution_time 300
+php_value max_input_time 300
+
+# Tambah cache browser untuk file statis
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresDefault "access plus 2 days"
+</IfModule>
+
+# Error pages custom
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+ErrorDocument 500 /500.html

@@ -1,0 +1,238 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f4f4f4;
+    color: #5f4339;
+    font-size: 16px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    background-color: #5f4339;
+    padding: 20px;
+    color: #fff;
+    position: fixed;
+    height: 100vh;
+    transition: all 0.3s;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #d2b49a;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s;
+}
+
+.sidebar ul li a:hover, .sidebar ul li.active a {
+    background-color: #d2b49a;
+    color: #5f4339;
+    transform: translateX(12px);
+    font-weight: bold;
+}
+
+.sidebar ul li:hover {
+    cursor: pointer;
+}
+
+/* Main content styling */
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 25px;
+    background-color: #f9f3f0;
+    min-height: 100vh;
+}
+
+/* Section styling */
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+h2 {
+    font-size: 26px;
+    color: #5f4339;
+    margin-bottom: 20px;
+}
+
+/* Stats Boxes */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.stat-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+}
+
+.stat-box h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+.stat-box p {
+    font-size: 24px;
+    color: #5e4b42;
+    font-weight: bold;
+}
+
+/* Product Form */
+#addProductForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin-bottom: 30px;
+}
+
+#addProductForm input, #addProductForm select {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #d2b49a;
+    border-radius: 8px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+#addProductForm input:focus, #addProductForm select:focus {
+    border-color: #ED5151;
+    outline: none;
+}
+
+/* Product Category Filter */
+#filterForm {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#filterForm select, #filterForm button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #d2b49a;
+    font-size: 16px;
+}
+
+#filterForm button {
+    background-color: #5f4339;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#filterForm button:hover {
+    background-color: #d2b49a;
+    transform: translateY(-3px);
+}
+
+/* Product List */
+#productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Popup Modal */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup.active {
+    display: flex; /* Ditampilkan saat class 'active' ditambahkan */
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content button {
+    background: #5e4b42;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup-content button:hover {
+    background: #4b382e;
+}
+
+/* Chart.js Canvas */
+canvas {
+    max-width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .stat-box {
+        flex: none;
+    }
+}
